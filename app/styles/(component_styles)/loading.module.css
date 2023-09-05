@@ -49,24 +49,22 @@
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
-.ldsEllipsis div:nth-child(1) {
+.ldsEllipsis img:nth-child(1) {
   left: -5px;
   animation: ellipsisFirst cubic-bezier(0.5, 0.35, 0.79, 0.86) 2.1s infinite;
-  background: var(--orange-mid);
-  /* animation-delay: 100ms; */
 }
 
 .ldsEllipsis div:nth-child(2) {
   left: 10px;
   animation: ellipsis2 ease-in-out 2.7s infinite;
-  background: var(--yellow-mid);
+  background: var(--blue-mid-light);
   /* animation-delay: 250ms; */
 }
 
 .ldsEllipsis div:nth-child(3) {
   left: 44px;
   animation: ellipsis3 ease-in-out 2.3s infinite;
-  background: var(--chartreuse);
+  background: var(--blue-light);
 }
 
 .ldsEllipsis div:nth-child(4) {
@@ -78,67 +76,67 @@
 
 @keyframes ellipsisFirst {
   0% {
-    z-index: 1;
-    transform: scale(0) translate(100px, 0);
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(7deg);
+  }
+
+  30% {
+    transform: rotate(3deg);
   }
 
   60% {
-    z-index: 10;
-    transform: scale(1) translate(0px, -3px);
+    transform: rotate(-5deg);
+  }
+
+  80% {
+    transform: rotate(5deg);
   }
 
   100% {
-    z-index: 1;
-    transform: scale(0) translate(-80px, 0);
+    transform: rotate(0deg);
   }
 }
 
 @keyframes ellipsis2 {
   0% {
-    z-index: 1;
-    transform: scale(0);
+    transform: scale(0.8);
   }
 
   60% {
-    z-index: 3;
-    transform: scale(0.8) translate(-5px, 3px);
+    transform: scale(0.5) translate(-5px, 3px);
   }
 
   100% {
-    z-index: 1;
-    transform: scale(0) translate(0, 0);
+    transform: scale(0.8) translate(0, 0);
   }
 }
 
 @keyframes ellipsis3 {
   0% {
-    z-index: 1;
-    transform: scale(0) translate(0px, 0);
+    transform: scale(0.5) translate(-10px, 0);
   }
 
   50% {
-    z-index: 3;
-    transform: scale(0.9) translate(0, -5px);
+    transform: scale(0.9) translate(-5px, 2px);
   }
   100% {
-    z-index: 1;
-    transform: scale(0) translate(0px, 0);
+    transform: scale(0.5) translate(-10px, 0);
   }
 }
 
 @keyframes ellipsisLast {
   0% {
-    z-index: 1;
-    transform: scale(0) translate(48px, -2px);
+    transform: scale(0.7) translate(-22px, 0px);
   }
 
   60% {
-    z-index: 10;
-    transform: scale(1.1) translate(-7px, 2px);
+    transform: scale(0.9) translate(-24px, 2px);
   }
 
   100% {
-    z-index: 1;
-    transform: scale(0) translate(-48px, 0);
+    transform: scale(0.7) translate(-22px, 0px);
   }
 }

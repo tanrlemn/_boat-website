@@ -4,8 +4,7 @@
   justify-content: space-between;
   align-items: center;
   min-height: 100vh;
-  background: var(--green-teal-mid-dark);
-  color: #fff;
+  background: var(--chartreuse-super-light);
 }
 
 .heroWrapper {

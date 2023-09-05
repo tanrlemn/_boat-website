@@ -1,14 +1,12 @@
 'use client';
 
-import navStyles from './styles/nav.module.css';
-import textStyles from './styles/text.module.css';
 import spacingStyles from './styles/spacing.module.css';
-import ctaStyles from './styles/(component_styles)/cta.module.css';
 
-// images
+// icons
 import { VscClose } from 'react-icons/vsc';
 import { CgMenuRight } from 'react-icons/cg';
 import bag from '../public/icons/bag.svg';
+import logo from '../public/logo.svg';
 
 // context
 import { LoadingContext } from './context/loadingContext';
@@ -21,6 +19,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useIsMobile } from './api/hooks/useWindowSize';
 
 // components
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Loading from './loading';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -39,232 +38,151 @@ export default function Nav() {
   const searchParams = useSearchParams();
   const isMobile = useIsMobile();
 
-  const isShop =
-    pathname.indexOf('/shop') > -1 || pathname.indexOf('/cart') > -1;
-
-  // state
-
   const [openMenu, setOpenMenu] = useState(false);
-
-  const [nav, setNav] = useState({
-    background: navStyles.navWrapper,
-    link: navStyles.navLink,
-    shop: isShop,
-    brand: navStyles.brandTitle,
-  });
 
   // effects
   useEffect(() => {
     setLoading(true);
-    setOpenMenu(false);
-
-    if (isShop) {
-      setNav({
-        background: navStyles.navWrapperShop,
-        link: navStyles.navLinkShop,
-        shop: isShop,
-        brand: navStyles.brandTitleShop,
-        navSpacer: navStyles.shopNavSpacer,
-      });
-    } else {
-      setNav({
-        background: navStyles.navWrapper,
-        link: navStyles.navLink,
-        shop: isShop,
-        brand: navStyles.brandTitle,
-        navSpacer: navStyles.navSpacer,
-      });
-    }
 
     const randomTime = Math.random() * (1700 - 500) + 500;
     setTimeout(() => {
       setLoading(false);
     }, randomTime);
-  }, [
-    pathname,
-    searchParams,
-    isShop,
-    isMobile,
-    numCartItems,
-    cart,
-    setLoading,
-  ]);
-
-  // styles
-
-  const whiteBagStyle = {
-    filter: 'invert(1) sepia(1) saturate(1) hue-rotate(180deg)',
-  };
-
-  const iconStyle = {
-    filter: 'invert(0) sepia(0) saturate(0) hue-rotate(0deg)',
-  };
-
-  const sideBarStyle = {
-    left: showContactBar ? '0' : '-100vw',
-  };
+  }, [pathname, searchParams, isMobile, numCartItems, cart, setLoading]);
 
   return (
     <>
-      <nav className={nav.background}>
-        <ContactBar
-          style={sideBarStyle}
-          setShowContactBar={setShowContactBar}
-          showContactBar={showContactBar}
-        />
-        <div className={navStyles.innerNav}>
+      <Box
+        minW={'100%'}
+        borderBottom={'1px solid var(----blue-mid-light, #85ADC5)'}
+        borderStyle={'dashed'}
+        strokeDasharray={'8, 8'}
+        background={'var(--chartreuse-lightest)'}
+        pos={'fixed'}
+        p={'0px 20px'}
+        zIndex={100}
+        h={'5rem'}>
+        <Flex
+          align={'center'}
+          justify={'space-between'}
+          w={'100%'}
+          h={'100%'}>
           <Link
             onClick={() => {
               setOpenMenu(false);
             }}
-            href='/'
-            className={navStyles.brandBlock}>
-            <div className={nav.brand}>
-              <div className={spacingStyles.blueUnderscoreWrap}>
-                <RainbowLetters string='YOURHEAD' />
-                <div className={spacingStyles.blueUnderscoreSm}></div>
-              </div>
-            </div>
+            href='/'>
+            <Box mb={'0.6rem'}>
+              <Box className={spacingStyles.blueUnderscoreWrap}>
+                <Image
+                  src={logo}
+                  alt={'fakeBoat logo'}
+                  width={40}
+                  height={40}
+                />
+                <Box
+                  ml={'-0.5rem'}
+                  mr={'-0.2rem'}
+                  mb={'0.2rem'}
+                  minW={'1rem'}
+                  borderBottom={'var(--blue-light-border-2)'}
+                  display={'inline-block'}
+                  lineHeight={'inherit'}></Box>
+
+                <Heading
+                  size={'md'}
+                  color={'var(--green-teal-mid)'}>
+                  fakeBoat
+                </Heading>
+              </Box>
+            </Box>
           </Link>
           {(!isMobile || openMenu) && (
-            <div className={navStyles.navMenu}>
-              <div className={navStyles.navLinkWrap}>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                  }}
-                  href='/'
-                  className={isMobile ? navStyles.navLink : nav.link}>
+            <Flex
+              fontSize={'0.9rem'}
+              justify={'flex-end'}
+              align={'center'}>
+              <Link
+                onClick={() => {
+                  setOpenMenu(false);
+                }}
+                href='/'>
+                <Text
+                  cursor={'pointer'}
+                  _hover={{ outline: 'var(--blue-mid-border-2)' }}
+                  p={'0.7rem 1.4rem'}
+                  borderRadius={'0.3rem'}>
                   Home
-                </Link>
-                {/* <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                  }}
-                  href='/painting-real-people'
-                  className={isMobile ? navStyles.navLink : nav.link}>
-                  Painting Real People
-                </Link> */}
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                  }}
-                  href='/shop'
-                  className={isMobile ? navStyles.navLink : nav.link}>
+                </Text>
+              </Link>
+              <Link
+                onClick={() => {
+                  setOpenMenu(false);
+                }}
+                href='/shop'>
+                <Text
+                  cursor={'pointer'}
+                  _hover={{ outline: 'var(--blue-mid-border-2)' }}
+                  p={'0.7rem 1.4rem'}
+                  borderRadius={'0.3rem'}>
                   Shop
-                </Link>
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                  }}
-                  href='/recents'
-                  className={isMobile ? navStyles.navLink : nav.link}>
+                </Text>
+              </Link>
+              <Link
+                onClick={() => {
+                  setOpenMenu(false);
+                }}
+                href='/recents'>
+                <Text
+                  cursor={'pointer'}
+                  _hover={{ outline: 'var(--blue-mid-border-2)' }}
+                  p={'0.7rem 1.4rem'}
+                  borderRadius={'0.3rem'}>
                   Recents
-                </Link>
-                {/* <Link
-                        onClick={() => {
-                          setOpenMenu(false);
-                        }}
-                        href='/memberships'
-                        className={isMobile ? navStyles.navLink : nav.link}>
-                        Memberships
-                      </Link> */}
-                <Link
-                  onClick={() => {
-                    setOpenMenu(false);
-                  }}
-                  href='/about'
-                  className={isMobile ? navStyles.navLink : nav.link}>
+                </Text>
+              </Link>
+              <Link
+                onClick={() => {
+                  setOpenMenu(false);
+                }}
+                href='/memberships'>
+                <Text
+                  cursor={'pointer'}
+                  _hover={{ outline: 'var(--blue-mid-border-2)' }}
+                  p={'0.7rem 1.4rem'}
+                  borderRadius={'0.3rem'}>
+                  Memberships
+                </Text>
+              </Link>
+              <Link
+                onClick={() => {
+                  setOpenMenu(false);
+                }}
+                href='/about'>
+                <Text
+                  cursor={'pointer'}
+                  _hover={{ outline: 'var(--blue-mid-border-2)' }}
+                  p={'0.7rem 1.4rem'}
+                  borderRadius={'0.3rem'}>
                   About
-                </Link>
-                <div
-                  onClick={() => {
-                    setOpenMenu(false);
-                    setShowContactBar(true);
-                  }}
-                  className={isMobile ? navStyles.navLink : nav.link}>
-                  Contact
-                </div>
-              </div>
-              {/* <div className={navStyles.navButtonsWrap}>
-                    <div className={spacingStyles.rightPaddingXs}>
-                      <Link
-                        href='/auth/login'
-                        className={textStyles.linkBlockWhiteOutline}>
-                        Log in
-                      </Link>
-                    </div>
-                    <Link
-                      href='/auth/signup'
-                      className={textStyles.linkBlockChartreuse}>
-                      <div className={navStyles.buttonLabel}>Sign up</div>
-                    </Link>
-                  </div> */}
-
-              {!isMobile && (
-                <div className={navStyles.cartWrap}>
-                  <Link
-                    href='/cart'
-                    className={navStyles.navLink}>
-                    {numCartItems > 0 && (
-                      <div className={navStyles.cartLabel}>{numCartItems}</div>
-                    )}
-                    <Image
-                      src={bag}
-                      alt='cart'
-                      style={!nav.shop ? whiteBagStyle : null}
-                    />
-                  </Link>
-                </div>
-              )}
-            </div>
+                </Text>
+              </Link>
+              <Text
+                cursor={'pointer'}
+                _hover={{ outline: 'var(--blue-mid-border-2)' }}
+                p={'0.7rem 1.4rem'}
+                borderRadius={'0.3rem'}
+                onClick={() => {
+                  setOpenMenu(false);
+                  setShowContactBar(true);
+                }}>
+                Contact
+              </Text>
+            </Flex>
           )}
-        </div>
-        {isMobile && (
-          <div className={navStyles.cartWrap}>
-            <Link
-              href='/cart'
-              className={navStyles.navLink}>
-              {numCartItems > 0 && (
-                <div className={navStyles.cartLabel}>{numCartItems}</div>
-              )}
-              <Image
-                src={bag}
-                alt='cart'
-                style={!nav.shop ? whiteBagStyle : null}
-              />
-            </Link>
-          </div>
-        )}
-        <div className={navStyles.mobileMenuWrap}>
-          {!openMenu && isMobile && (
-            <CgMenuRight
-              className={navStyles.mobileMenuIcon}
-              style={isShop ? iconStyle : null}
-              onClick={() => {
-                setOpenMenu(!openMenu);
-              }}
-            />
-          )}
-          {openMenu && isMobile && (
-            <VscClose
-              className={navStyles.mobileMenuIcon}
-              onClick={() => {
-                setOpenMenu(!openMenu);
-              }}
-            />
-          )}
-        </div>
-        {openMenu && isMobile && (
-          <div
-            className={navStyles.clickOutWrap}
-            onClick={() => {
-              setOpenMenu(!openMenu);
-            }}></div>
-        )}
-        {isShop && <NavSubMenu />}
-      </nav>
-      <div className={nav.navSpacer}></div>
+        </Flex>
+      </Box>
+      <Box h={'5rem'}></Box>
       {loading && <Loading />}
     </>
   );

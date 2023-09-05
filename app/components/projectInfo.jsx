@@ -19,7 +19,6 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 // components
 import Link from 'next/link';
 import Image from 'next/image';
-import { Masonry } from '@mui/lab';
 
 export default function ProjectInfo({ project }) {
   const router = useRouter();
@@ -108,16 +107,6 @@ export default function ProjectInfo({ project }) {
             <div className={spacingStyles.bottomMarginLg}>
               <h1 className={textStyles.headingXl}>
                 {project.subtitle.split(' ').map((word, index) => {
-                  if (index === project.subtitle.split(' ').length - 1) {
-                    return (
-                      <span
-                        key={index}
-                        className={textStyles.textBurst}
-                        style={orangeBurst}>
-                        {word}
-                      </span>
-                    );
-                  }
                   return word + ' ';
                 })}
               </h1>
@@ -150,25 +139,20 @@ export default function ProjectInfo({ project }) {
         </div>
 
         <div className={styles.imagesWrap}>
-          <Masonry
-            columns={isMobile && windowSize > 770 ? 2 : isMobile ? 1 : 2}
-            spacing={1}
-            style={{ alignContent: 'center' }}>
-            {sliderImages().map((slideImage, index) => (
-              <Image
-                sx={{ slideImage }}
-                src={slideImage.url}
-                key={index}
-                width={imageWidth}
-                height={imageHeight}
-                alt={`image for ${project.title}`}
-                style={{
-                  objectFit: 'contain',
-                  height: 'auto',
-                }}
-              />
-            ))}
-          </Masonry>
+          {sliderImages().map((slideImage, index) => (
+            <Image
+              sx={{ slideImage }}
+              src={slideImage.url}
+              key={index}
+              width={imageWidth}
+              height={imageHeight}
+              alt={`image for ${project.title}`}
+              style={{
+                objectFit: 'contain',
+                height: 'auto',
+              }}
+            />
+          ))}
         </div>
       </div>
     </div>

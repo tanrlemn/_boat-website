@@ -1,7 +1,10 @@
 'use client';
 
 // hooks
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+
+// components
+import { Highlight } from '@chakra-ui/react';
 
 export default function RainbowLetters({ string }) {
   const [returnText, setReturnText] = useState('');
@@ -63,13 +66,14 @@ export default function RainbowLetters({ string }) {
         const newColor = moveColor();
 
         return (
-          <span
+          <Highlight
+            query={letter}
             key={key}
-            style={{
+            styles={{
               color: newColor,
             }}>
             {letter}
-          </span>
+          </Highlight>
         );
       });
       setReturnText(rainbowLetters);

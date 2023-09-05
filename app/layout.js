@@ -1,15 +1,14 @@
-'use client';
-
 import '@/app/globals.css';
 
-// context
-import { LoadingContext } from './context/loadingContext';
-import { CartProvider } from './context/cartContext';
-import { ContactContext } from './context/contactContext';
+// server
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
-// hooks
-import { useState, Suspense } from 'react';
-import { createTheme, ThemeProvider } from '@mui/material';
+// context
+import LoadingProvider from './context/loadingContext';
+import { CartProvider } from './context/cartContext';
+import ContactProvider from './context/contactContext';
+import ChakraContextProvider from './context/chakraContextProvider';
 
 // components
 import Nav from './nav';
@@ -20,53 +19,37 @@ import Loading from './loading';
 import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
+// metadata
+export const metadata = {
+  title: 'fakeBoat',
+  description: '...',
+};
+
 // root layout
-export default function RootLayout({ children }) {
-  const [loading, setLoading] = useState(true);
-  const loadingValue = { loading, setLoading };
+export default async function RootLayout({ children }) {
+  const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  const [showContactBar, setShowContactBar] = useState(false);
-  const showContactValue = { showContactBar, setShowContactBar };
+  const { data } = await supabase.from('profiles').select();
+  const profileData = data !== null ? data[0] : null;
 
-  const theme = createTheme({
-    breakpoints: {
-      values: {
-        mobile: 0,
-        tablet: 640,
-        laptop: 1090,
-        desktop: 1200,
-      },
-    },
-  });
-
-  // render
   return (
     <html lang='en'>
-      <LoadingContext.Provider value={loadingValue}>
-        <ContactContext.Provider value={showContactValue}>
-          <CartProvider>
-            <ThemeProvider theme={theme}>
-              <body className={inter.className}>
-                <script
-                  src='https://accounts.google.com/gsi/client'
-                  async
-                  defer></script>
-                <Suspense fallback={<Loading />}>
-                  <Nav
-                    setShowContactBar={setShowContactBar}
-                    showContactBar={showContactBar}
-                  />
-                  {children}
-                </Suspense>
-                <Footer
-                  setShowContactBar={setShowContactBar}
-                  showContactBar={showContactBar}
-                />
-              </body>
-            </ThemeProvider>
-          </CartProvider>
-        </ContactContext.Provider>
-      </LoadingContext.Provider>
+      <body className={inter.className}>
+        <ChakraContextProvider>
+          <LoadingProvider>
+            <ContactProvider>
+              <CartProvider>
+                <Nav />
+                {children}
+                <Footer />
+              </CartProvider>
+            </ContactProvider>
+          </LoadingProvider>
+        </ChakraContextProvider>
+      </body>
     </html>
   );
 }

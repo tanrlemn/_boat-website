@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'utjfdbdjzeqijvvxwiqo.supabase.co',
+        hostname: 'wbhjmgzgilkexhcnhmiw.supabase.co',
         port: '',
         pathname: '/**',
       },
@@ -26,13 +26,6 @@ const nextConfig = {
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
-
-    XANO_URL: process.env.XANO_URL,
-    XANO_API_KEY: process.env.XANO_API_KEY,
-    XANO_API_URL: process.env.XANO_API_URL,
-    XANO_OAUTH_KEY: process.env.XANO_OAUTH_KEY,
-    XANO_OAUTH_INIT_ENDPOINT: process.env.XANO_OAUTH_INIT_ENDPOINT,
-    XANO_OAUTH_CONTINUE_ENDPOINT: process.env.XANO_OAUTH_CONTINUE_ENDPOINT,
 
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,

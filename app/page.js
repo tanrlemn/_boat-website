@@ -26,6 +26,7 @@ import { useIsMobile } from './api/hooks/useIsMobile';
 import Image from 'next/image';
 import LoadingDiv from './components/loadingDiv';
 import Link from 'next/link';
+import { Box, Flex, Text, Heading } from '@chakra-ui/react';
 
 export default function Home() {
   const { loading } = useContext(LoadingContext);
@@ -44,7 +45,7 @@ export default function Home() {
     maxHeight: imgMax,
     minWidth: imgMin,
     minHeight: '100%',
-    borderRadius: '10px',
+    borderRadius: '0.3rem',
     margin: '5px',
     objectFit: 'cover',
     objectPosition: '50% 20%',
@@ -65,46 +66,43 @@ export default function Home() {
   };
 
   return (
-    <main className={styles.main}>
-      <div className={styles.heroWrapper}>
-        <div className={styles.heroContent}>
+    <Flex>
+      <Flex
+        p={'2rem'}
+        align={'center'}>
+        <Box
+          pr={'4em'}
+          maxW={'45%'}>
           {!loading && <LoadingDiv />}
-          <h1 className={textStyles.headingXl}>
-            <span
-              className={textStyles.textBurst}
-              style={burst}>
-              Painting
-              <br />
-            </span>{' '}
-            real <br />
-            people.
-          </h1>
-          <div className={spacingStyles.bottomTopMarginLg}>
-            <p className={textStyles.paragraphMain}>
-              We could pretend that we don&apos;t know each other, that we
-              aren&apos;t real. But maybe let&apos;s paint portraits just to
-              make sure.
-            </p>
-          </div>
+          <Heading size={'2xl'}>A fakeBoat for swimming</Heading>
+          <Text
+            fontSize={'1.2rem'}
+            mb={'1rem'}
+            mt={'1rem'}>
+            Unprocessed, organic, and free-range development, music, and
+            paintings.
+          </Text>
           <div className={styles.heroButtonsWrap}>
             <Link
-              href='/shop'
+              href='/'
               className={textStyles.linkBlockChartreuse}
               style={buttonStyle}>
               <div className={textStyles.buttonLabel}>View shop</div>
               <BsArrowRight />
             </Link>
-            <Link
-              href='/about'
-              className={textStyles.linkBlockWhite}>
-              <div className={textStyles.buttonLabel}>Learn more</div>
-              <BsArrowRight />
-            </Link>
           </div>
-        </div>
-        <div className={styles.heroImageGrid}>
-          <div className={styles.heroRail}>
-            <div className={styles.imageFrameSquare}>
+        </Box>
+        <Box
+          mr={'-10rem'}
+          minH={'100%'}
+          backgroundColor={'var(--chartreuse-light)'}
+          borderRadius={'0.3rem'}>
+          <Flex
+            maxH={'20rem'}
+            m={'1em 1em'}>
+            <Box
+              mr={'1rem'}
+              borderRadius={'0.3rem'}>
               <Image
                 src={donut}
                 height={300}
@@ -112,8 +110,8 @@ export default function Home() {
                 style={squareImage}
                 alt='Donut painting'
               />
-            </div>
-            <div className={styles.imageFrameSquare}>
+            </Box>
+            <Box borderRadius={'0.3rem'}>
               <Image
                 src={bliss}
                 height={300}
@@ -121,10 +119,14 @@ export default function Home() {
                 style={squareImage}
                 alt='Bliss painting'
               />
-            </div>
-          </div>
-          <div className={styles.heroRail}>
-            <div className={styles.imageFrameSquare}>
+            </Box>
+          </Flex>
+          <Flex
+            maxH={'20rem'}
+            m={'0.7em 1em'}>
+            <Box
+              mr={'1rem'}
+              borderRadius={'0.3rem'}>
               <Image
                 src={owner}
                 height={300}
@@ -132,8 +134,8 @@ export default function Home() {
                 style={squareImage}
                 alt='Owner painting'
               />
-            </div>
-            <div className={styles.imageFrameSquare}>
+            </Box>
+            <Box borderRadius={'0.3rem'}>
               <Image
                 src={whalerider}
                 height={300}
@@ -141,10 +143,10 @@ export default function Home() {
                 style={squareImage}
                 alt='Whalerider painting'
               />
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
+    </Flex>
   );
 }

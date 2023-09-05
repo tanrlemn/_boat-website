@@ -107,7 +107,7 @@ export default function Footer({ showContactBar, setShowContactBar }) {
             </div>
           </div>
           <div className={spacingStyles.fullDividerGreen}></div>
-          <Marquee delay={-20} />
+          {/* <Marquee delay={-20} /> */}
           <div className={spacingStyles.fullDividerGreen}></div>
           <div className={navStyles.footerLower}>
             <div className={textStyles.footerLowerText}>

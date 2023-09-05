@@ -7,6 +7,7 @@
 
   /* colors */
   /* green */
+  --chartreuse-super-light: #fcfff8;
   --chartreuse-lightest: #f6fdea;
   --chartreuse-light: #e4f8c0;
   --chartreuse: #b4ff29;
@@ -30,7 +31,7 @@
 
   /* orange */
   --orange-lightest: #ffedeb;
-  --orange-light: #f4cdc8;
+  --orange-light: #f4dcc8;
   --orange-light-50: #f1c4be50;
   --orange-mid: #ff8528;
 

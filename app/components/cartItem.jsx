@@ -14,7 +14,7 @@ import { useIsMobile } from '@/app/api/hooks/useIsMobile';
 import { useWindowSize } from '@/app/api/hooks/useWindowSize';
 
 // components
-import { Grid } from '@mui/material';
+import { Grid, GridItem } from '@chakra-ui/react';
 import Image from 'next/image';
 import QtySelect from './qtySelect';
 import Link from 'next/link';
@@ -125,12 +125,12 @@ export default function CartItem({ item }) {
             <p
               className={textStyles.paragraphXxs}
               style={alignRight}>
-              <span className={textStyles.onSale}>
+              {/* <span className={textStyles.onSale}>
                 {onSale ? `$${product.sale_price.toFixed(2)}` : ''}
               </span>
               <span style={onSale ? saleStyles : null}>
                 ${product.price.toFixed(2)}
-              </span>
+              </span> */}
             </p>
           </Grid>
           <Grid
@@ -155,14 +155,14 @@ export default function CartItem({ item }) {
         <p
           className={textStyles.paragraphXxs}
           style={alignRight}>
-          <span className={textStyles.onSale}>
-            {onSale
-              ? `$${(product.sale_price * currentProductConfig.qty).toFixed(2)}`
-              : ''}
-          </span>
-          <span style={onSale ? saleStyles : null}>
-            {`$${totalPrice.toFixed(2)}`}
-          </span>
+          {/* <span className={textStyles.onSale}>
+              {onSale
+                ? `$${(product.sale_price * currentProductConfig.qty).toFixed(2)}`
+                : ''}
+            </span>
+            <span style={onSale ? saleStyles : null}>
+              {`$${totalPrice.toFixed(2)}`}
+            </span> */}
         </p>
         {!isMobile && (
           <p

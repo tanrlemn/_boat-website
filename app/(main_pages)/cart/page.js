@@ -15,7 +15,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useIsMobile } from '@/app/api/hooks/useIsMobile';
 
 // components
-import { Grid } from '@mui/material';
+import { Grid, GridItem } from '@chakra-ui/react';
 import CartItem from '@/app/components/cartItem';
 import CheckoutForm from '@/app/components/checkoutForm';
 import Link from 'next/link';

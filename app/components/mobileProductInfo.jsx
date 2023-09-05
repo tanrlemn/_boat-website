@@ -186,12 +186,12 @@ export default function MobileProductInfo({ product, collection }) {
         <div className={spacingStyles.topMarginLg}>
           <div className={spacingStyles.bottomBorderBlue}>
             <p className={textStyles.headingXsAlt}>
-              <span style={onSale ? saleStyles : null}>
+              {/* <span style={onSale ? saleStyles : null}>
                 ${product.price.toFixed(2)}
               </span>{' '}
               <span className={textStyles.onSale}>
                 {onSale ? `$${product.sale_price.toFixed(2)}` : ''}
-              </span>
+              </span> */}
             </p>
           </div>
         </div>

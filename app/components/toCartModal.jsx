@@ -42,10 +42,7 @@ export default function ToCartModal({ product, collection, setAddedToCart }) {
           <div className={styles.modalHeader}>
             <div className={spacingStyles.bottomMarginMd}>
               <div className={spacingStyles.centered}>
-                <h2 className={textStyles.headingMd}>
-                  <span className={spacingStyles.blueUnderscoreLg}></span>
-                  Added to bag
-                </h2>
+                <h2 className={textStyles.headingMd}>Added to bag</h2>
               </div>
             </div>
           </div>
@@ -63,9 +60,9 @@ export default function ToCartModal({ product, collection, setAddedToCart }) {
               </div>
               <div className={spacingStyles.centered}>
                 <p className={textStyles.paragraphXs}>
-                  <span className={textStyles.aBitBolder}>
+                  {/* <span className={textStyles.aBitBolder}>
                     {product.title} –
-                  </span>{' '}
+                  </span>{' '} */}
                   has been added to your cart.
                 </p>
               </div>

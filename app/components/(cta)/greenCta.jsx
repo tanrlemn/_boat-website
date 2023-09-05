@@ -53,11 +53,6 @@ export default function GreenCta() {
           className={textStyles.headingMd}
           style={isMobile ? mobileLineHeight : null}>
           Collaborate with{' '}
-          <span
-            className={textStyles.textBurst}
-            style={orangeBurst}>
-            YOURHEAD
-          </span>
         </h2>
         <div className={styles.ctaChecksWrap}>
           <div className={styles.checkItem}>

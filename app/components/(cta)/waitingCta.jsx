@@ -17,9 +17,7 @@ export default function WaitingCta({ waitingPeriod }) {
             </div>
           </div>
           <h2 className={textStyles.headingMd}>Waiting period:</h2>
-          <h3 className={textStyles.headingSm}>
-            <span className={textStyles.outlineText}>{waitingPeriod}</span>
-          </h3>
+          <h3 className={textStyles.headingSm}></h3>
         </div>
         <div className={styles.ctaFormWrap}>
           <div className={styles.ctaForm}>

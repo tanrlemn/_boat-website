@@ -19,11 +19,11 @@ export default function Marquee({ delay = 0 }) {
     const marqueeSpan = [];
     for (let i = 0; i < 9; i++) {
       marqueeSpan.push(
-        <span
+        <div
           className={marqueeStyles.marqueeSpan}
           key={i}>
           YOURHEADISOURHEAD
-        </span>
+        </div>
       );
     }
     return marqueeSpan;

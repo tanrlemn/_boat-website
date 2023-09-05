@@ -43,11 +43,6 @@ export default function PaintingRealPeople() {
           <div className={spacingStyles.bottomMarginLg}>
             <h1 className={textStyles.headingXl}>
               A world of humans, longing to be{' '}
-              <span
-                className={textStyles.textBurst}
-                style={orangeBurst}>
-                seen
-              </span>
             </h1>
           </div>
           <div className={spacingStyles.bottomMarginMd}>

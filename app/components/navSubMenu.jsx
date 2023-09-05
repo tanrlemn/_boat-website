@@ -20,10 +20,7 @@ export default function NavSubMenu() {
       <div className={styles.subMenu}>
         <div className={styles.navTitleWrap}>
           <div className={spacingStyles.blueUnderscoreWrap}>
-            <p className={styles.navTitle}>
-              <span className={spacingStyles.blueUnderscoreSm}></span>
-              Categories:
-            </p>
+            <p className={styles.navTitle}>Categories:</p>
           </div>
         </div>
         <Link

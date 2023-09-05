@@ -93,11 +93,6 @@ export default function Recents() {
             </div>
 
             <h1 className={textStyles.headingLg}>
-              <span
-                className={textStyles.textBurst}
-                style={orangeBurst}>
-                YOURHEAD
-              </span>
               <br /> made these.
             </h1>
             <div className={spacingStyles.topMarginMd}>

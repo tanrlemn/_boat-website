@@ -78,11 +78,6 @@ export default function About() {
             <h1 className={textStyles.headingXl}>
               Searching <br />
               for real{' '}
-              <span
-                className={textStyles.textBurst}
-                style={orangeBurst}>
-                people
-              </span>
             </h1>
           </div>
         </div>
