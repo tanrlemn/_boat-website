@@ -32,32 +32,15 @@ export default function Home() {
   const { loading } = useContext(LoadingContext);
 
   const mobile = useIsMobile();
-  const [imgMax, setImgMax] = useState(!mobile ? '100%' : '35em');
-  const [imgMin, setImgMin] = useState(!mobile ? '100%' : '25em');
-
-  useEffect(() => {
-    setImgMax(mobile ? '100%' : '35em');
-    setImgMin(mobile ? '100%' : '25em');
-  }, [mobile]);
 
   const squareImage = {
-    maxWidth: imgMax,
-    maxHeight: imgMax,
-    minWidth: imgMin,
+    maxWidth: '100%',
+    maxHeight: '100%',
+    minWidth: '100%',
     minHeight: '100%',
     borderRadius: '0.3rem',
-    margin: '5px',
     objectFit: 'cover',
     objectPosition: '50% 20%',
-  };
-
-  const burstPadding = mobile ? '0 0.4em 0.4em 0' : '0 0.3em 0.3em 0';
-
-  const burst = {
-    backgroundImage: `url(${textBurst.src})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'bottom right',
-    padding: burstPadding,
   };
 
   const buttonStyle = {
@@ -66,13 +49,14 @@ export default function Home() {
   };
 
   return (
-    <Flex>
+    <Flex backgroundColor={'var(--chartreuse-lightest)'}>
       <Flex
+        justify={'center'}
         p={'2rem'}
         align={'center'}>
         <Box
           pr={'4em'}
-          maxW={'45%'}>
+          maxW={'40%'}>
           {!loading && <LoadingDiv />}
           <Heading size={'2xl'}>A fakeBoat for swimming</Heading>
           <Text
@@ -82,24 +66,23 @@ export default function Home() {
             Unprocessed, organic, and free-range development, music, and
             paintings.
           </Text>
-          <div className={styles.heroButtonsWrap}>
-            <Link
-              href='/'
-              className={textStyles.linkBlockChartreuse}
-              style={buttonStyle}>
-              <div className={textStyles.buttonLabel}>View shop</div>
-              <BsArrowRight />
-            </Link>
-          </div>
+
+          <Link
+            href='/'
+            className={textStyles.linkBlockChartreuse}
+            style={buttonStyle}>
+            <div className={textStyles.buttonLabel}>View shop</div>
+            <BsArrowRight />
+          </Link>
         </Box>
         <Box
-          mr={'-10rem'}
           minH={'100%'}
+          maxW={'60%'}
           backgroundColor={'var(--chartreuse-light)'}
           borderRadius={'0.3rem'}>
           <Flex
             maxH={'20rem'}
-            m={'1em 1em'}>
+            p={'1em 1em 0.5em 1em'}>
             <Box
               mr={'1rem'}
               borderRadius={'0.3rem'}>
@@ -123,7 +106,7 @@ export default function Home() {
           </Flex>
           <Flex
             maxH={'20rem'}
-            m={'0.7em 1em'}>
+            p={'0.5em 1em 1em 1em'}>
             <Box
               mr={'1rem'}
               borderRadius={'0.3rem'}>

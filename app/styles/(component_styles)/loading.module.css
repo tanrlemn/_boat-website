@@ -13,30 +13,10 @@
   z-index: 200;
   background: var(--green-teal-mid-10);
 }
-.loadingDivWrapper {
-  display: flex;
-  position: relative;
-  left: -10px;
-  width: 6em;
-  max-width: 6em;
-  height: 2.7em;
-  max-height: 2.7em;
-  scale: 0.8;
-  background: var(--light-blue-gray-20);
-  border: var(--green-mid-border);
-  border-radius: 100px;
-  align-items: center;
-  padding-left: 1em;
-  backdrop-filter: blur(3px);
-  z-index: 2;
-  margin-top: -3em;
-  margin-bottom: 1em;
-}
+
 .ldsEllipsis {
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
 }
 
 .ldsEllipsis div {

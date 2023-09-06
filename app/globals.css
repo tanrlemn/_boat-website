@@ -20,7 +20,7 @@
 
   --green-teal-light: #8ac7c9;
   --green-teal-mid: #47888a;
-  --green-teal-mid-10: #47888a1b;
+  --green-teal-mid-10: #1c383857;
   --green-mid-dark: #2c5c5d;
   --green-teal-mid-dark: #204f58;
   --green-dark: #1a393a;
@@ -124,6 +124,7 @@
 html,
 body {
   max-width: var(--max-width);
+  background-color: var(--chartreuse-lightest);
 }
 
 html {

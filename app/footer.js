@@ -15,106 +15,136 @@ import { LoadingContext } from './context/loadingContext';
 import { useContext } from 'react';
 
 // components
+import { Text, Heading, Box, VStack, Flex } from '@chakra-ui/react';
 import Marquee from './components/marquee';
 import Link from 'next/link';
 
 export default function Footer({ showContactBar, setShowContactBar }) {
   const { loading } = useContext(LoadingContext);
 
-  // styles
-  const inputStyles = {
-    background: '#eee',
-  };
   return (
     <>
       {!loading && (
-        <footer className={navStyles.footerWrap}>
-          <div className={navStyles.footerInner}>
-            <div className={navStyles.footerLeft}>
-              <div className={textStyles.footerTitle}>YOURHEAD</div>
-              <div className={spacingStyles.bottomTopMarginMd}>
-                <div className={textStyles.paragraphSm}>
-                  YOURHEAD is a painter, musician, and innovator, offering a
-                  unique style and approach to all aspects of life.
-                </div>
-              </div>
-              <form
-                className={ctaStyles.form}
-                style={inputStyles}>
-                <input
-                  type='email'
-                  placeholder='Enter your email'
-                  className={ctaStyles.input}
-                  autoComplete='email'
-                />
-                <button
-                  type='submit'
-                  className={ctaStyles.arrowButton}>
-                  <BsArrowRight />
-                </button>
-              </form>
-            </div>
-            <div className={navStyles.footerRight}>
-              <div className={navStyles.footerColumn}>
-                <div className={textStyles.footerHeading}>The Artist</div>
-                <ul className={navStyles.footerList}>
-                  <li className={navStyles.footerLink}>
-                    <Link href='/about'>About</Link>
-                  </li>
-                  <li className={navStyles.footerLink}>
-                    <Link href='/memberships'>Memberships</Link>
-                  </li>
-                </ul>
-              </div>
-              <div className={navStyles.footerColumn}>
-                <div className={textStyles.footerHeading}>Shop</div>
-                <ul className={navStyles.footerList}>
-                  <li className={navStyles.footerLink}>
-                    <Link href='/shop?category=prints'>Prints</Link>
-                  </li>
-                  <li className={navStyles.footerLink}>
-                    <Link href='/shop?category=originals'>Originals</Link>
-                  </li>
-                </ul>
-              </div>
-              <div className={navStyles.footerColumn}>
-                <div className={textStyles.footerHeading}>Works</div>
-                <ul className={navStyles.footerList}>
-                  <li className={navStyles.footerLink}>
-                    <Link href='/recents'>Recents</Link>
-                  </li>
-                  <li className={navStyles.footerLink}>
-                    <Link href='/music'>Music</Link>
-                  </li>
-                </ul>
-              </div>
-              <div className={navStyles.footerColumn}>
-                <div className={textStyles.footerHeading}>Support</div>
-                <ul className={navStyles.footerList}>
-                  <li className={navStyles.footerLink}>
-                    <div
-                      onClick={() => {
-                        setShowContactBar(true);
-                      }}>
-                      Contact
-                    </div>
-                  </li>
-                  <li className={navStyles.footerLink}>
-                    <Link href='/support/faqs'>FAQs</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className={spacingStyles.fullDividerGreen}></div>
-          {/* <Marquee delay={-20} /> */}
-          <div className={spacingStyles.fullDividerGreen}></div>
-          <div className={navStyles.footerLower}>
-            <div className={textStyles.footerLowerText}>
-              © 2023 YOURHEAD, All Rights reserved
-            </div>
-          </div>
-        </footer>
+        <Box
+          background={'var(--blue-lightest)'}
+          color={'var(--blue-dark)'}
+          borderTop={'var(--orange-light-border)'}
+          minW={'100%'}>
+          <Flex
+            p={'5rem 3.5rem 1rem 3.5rem'}
+            justify={'space-between'}>
+            <Box
+              maxW={'30%'}
+              color={'var(--blue-dark)'}>
+              <Heading
+                mb={'0.3rem'}
+                size={'lg'}>
+                fakeBoat
+              </Heading>
+
+              <Text>
+                fakeBoat is basically just one guy who does a lot of stuff to
+                try to make money.
+              </Text>
+            </Box>
+            <Flex justify={'flex-end'}>
+              <VStack
+                maxW={'fit-content'}
+                mr={'5rem'}
+                textAlign={'left'}
+                align={'flex-start'}>
+                <Heading size={'md'}>The Artist</Heading>
+                <VStack
+                  textAlign={'left'}
+                  align={'flex-start'}>
+                  <Link href='/about'>
+                    <Text _hover={{ background: 'var(--green-light)' }}>
+                      About
+                    </Text>
+                  </Link>
+                  <Link href='/memberships'>
+                    <Text _hover={{ background: 'var(--green-light)' }}>
+                      Memberships
+                    </Text>
+                  </Link>
+                </VStack>
+              </VStack>
+              <VStack
+                maxW={'fit-content'}
+                mr={'5rem'}
+                textAlign={'left'}
+                align={'flex-start'}>
+                <Heading size={'md'}>Shop</Heading>
+                <VStack
+                  textAlign={'left'}
+                  align={'flex-start'}>
+                  <Link href='/shop?category=prints'>
+                    <Text _hover={{ background: 'var(--green-light)' }}>
+                      Prints
+                    </Text>
+                  </Link>
+                  <Link href='/shop?category=originals'>
+                    <Text _hover={{ background: 'var(--green-light)' }}>
+                      Originals
+                    </Text>
+                  </Link>
+                </VStack>
+              </VStack>
+              <VStack
+                maxW={'fit-content'}
+                mr={'5rem'}
+                textAlign={'left'}
+                align={'flex-start'}>
+                <Heading size={'md'}>
+                  <Text _hover={{ background: 'var(--green-light)' }}>
+                    Works
+                  </Text>
+                </Heading>
+                <VStack
+                  textAlign={'left'}
+                  align={'flex-start'}>
+                  <Link href='/recents'>
+                    <Text _hover={{ background: 'var(--green-light)' }}>
+                      Recents
+                    </Text>
+                  </Link>
+                  <Link href='/music'>
+                    <Text _hover={{ background: 'var(--green-light)' }}>
+                      Music
+                    </Text>
+                  </Link>
+                </VStack>
+              </VStack>
+              <VStack
+                maxW={'fit-content'}
+                textAlign={'left'}
+                align={'flex-start'}>
+                <Heading size={'md'}>Support</Heading>
+                <VStack
+                  textAlign={'left'}
+                  align={'flex-start'}>
+                  <Text
+                    cursor={'pointer'}
+                    _hover={{ background: 'var(--green-light)' }}
+                    onClick={() => {
+                      setShowContactBar(true);
+                    }}>
+                    Contact
+                  </Text>
+                  <Link href='/support/faqs'>
+                    <Text _hover={{ background: 'var(--green-light)' }}>
+                      FAQs
+                    </Text>
+                  </Link>
+                </VStack>
+              </VStack>
+            </Flex>
+          </Flex>
+          <Marquee />
+          <Box className={navStyles.footerLower}>
+            <Text fontSize={'0.7rem'}>©2023 fakeBoat, All Rights reserved</Text>
+          </Box>
+        </Box>
       )}
     </>
   );
