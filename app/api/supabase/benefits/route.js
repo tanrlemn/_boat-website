@@ -1,9 +1,10 @@
+import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabasePublicKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-export const supabaseBenefits = async () => {
+export async function GET() {
   const supabaseClient = createClient(supabaseUrl, supabasePublicKey);
 
   const { data, error } = await supabaseClient
@@ -15,6 +16,5 @@ export const supabaseBenefits = async () => {
     return error;
   }
 
-  console.log(data);
-  return data;
-};
+  return NextResponse.json(data);
+}

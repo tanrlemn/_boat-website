@@ -9,14 +9,14 @@ import spacingStyles from '@/app/styles/spacing.module.css';
 import textBurst from '@/public/icons/textBurst.svg';
 
 // context
-import { LoadingContext } from '@/app/context/loadingContext';
+import { LoadingContext } from '@/app/lib/context/loadingContext';
 
 // api
 import { supabase } from '@/app/api/db/getSupabase';
 
 // hooks
 import { useEffect, useState, useContext } from 'react';
-import { useIsMobile } from '../../api/hooks/useIsMobile';
+import { useIsMobile } from '../../lib/hooks/useIsMobile';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 // components

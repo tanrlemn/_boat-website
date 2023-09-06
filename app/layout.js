@@ -1,10 +1,10 @@
 import '@/app/globals.css';
 
 // context
-import LoadingProvider from './context/loadingContext';
-import { CartProvider } from './context/cartContext';
-import ContactProvider from './context/contactContext';
-import ChakraContextProvider from './context/chakraContextProvider';
+import LoadingProvider from './lib/context/loadingContext';
+import { CartProvider } from './lib/context/cartContext';
+import ContactProvider from './lib/context/contactContext';
+import ChakraContextProvider from './lib/context/chakraContextProvider';
 
 // components
 import Nav from './nav';

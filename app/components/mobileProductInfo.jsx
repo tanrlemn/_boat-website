@@ -10,7 +10,7 @@ import 'react-slideshow-image/dist/styles.css';
 import { VscChevronDown } from 'react-icons/vsc';
 
 // hooks
-import { useWindowSize } from '../api/hooks/useWindowSize';
+import { useWindowSize } from '../lib/hooks/useWindowSize';
 import { useState, useRef } from 'react';
 
 // components

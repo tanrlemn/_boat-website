@@ -21,7 +21,7 @@ import GreenCta from '../../components/(cta)/greenCta';
 
 // hooks
 import { useEffect, useState } from 'react';
-import { useIsMobile } from '../../api/hooks/useIsMobile';
+import { useIsMobile } from '../../lib/hooks/useIsMobile';
 
 export default function About() {
   const mobile = useIsMobile();

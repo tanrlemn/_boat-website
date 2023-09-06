@@ -10,10 +10,10 @@ import textBurst from '@/public/icons/textBurst.svg';
 import { BsArrowRight } from 'react-icons/bs';
 
 // context
-import { ContactContext } from '@/app/context/contactContext';
+import { ContactContext } from '@/app/lib/context/contactContext';
 
 // hooks
-import { useIsMobile } from '@/app/api/hooks/useIsMobile';
+import { useIsMobile } from '@/app/lib/hooks/useIsMobile';
 import { useContext } from 'react';
 
 // components
