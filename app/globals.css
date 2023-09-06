@@ -12,9 +12,9 @@
   --chartreuse-light: #e4f8c0;
   --chartreuse: #b4ff29;
   --chartreuse-50: #b4ff288c;
-  --green-light: #b0eab9;
-  --green-lightest: #f5fcf2;
-  --green-mid: #338673;
+  --green-light: #baffc4;
+  --green-lightest: #d3fcd0;
+  --green-mid: #64df42;
   --green-mid-15: #51aa7615;
   --green-green-mid-dark: #186123;
 
@@ -30,12 +30,14 @@
   --yellow-mid: #ffed28;
 
   /* orange */
-  --orange-lightest: #ffedeb;
-  --orange-light: #f4dcc8;
+  --orange-lightest: #ffeee0;
+  --orange-light: #ffd5b5;
   --orange-light-50: #f1c4be50;
+  --orange-mid-light: #ffc493;
   --orange-mid: #ff8528;
 
   /* red */
+  --red-lightest: #fcdfdf;
   --red-light: #f7c5c5;
   --red-mid: #fa4d4d;
   --red-dark: #b30606;
@@ -46,12 +48,17 @@
 
   /* blue */
   --blue-lightest: #d8f0ff;
+  --white-50: #d8f0ff84;
   --blue-light: #afd8f2;
   --blue-mid-light: #85adc5;
   --blue-mid: #0085d8;
-  --blue-dark: #0a589e;
+  --blue-mid-dark: #0069aa;
+  --blue-dark: #0a4375;
+  --blue-darker: #063d6e;
+  --blue-darkest: #03233f;
 
   /* purple */
+  --purple-lightest: #f3d7ff;
   --purple-light: #e2bff1;
   --purple-light-50: #d7a5ec72;
   --purple-mid: #bd5ae7;
@@ -96,7 +103,7 @@
   --white-border-50: 1px solid #ffffff50;
 
   --blue-light-border: 1px solid var(--blue-light);
-  --blue-light-border-2: 2px solid var(--blue-light);
+  --blue-light-border-2: 2px solid var(--blue-mid);
   --blue-light-border-4: 4px solid var(--blue-light);
   --blue-mid-border-2: 2px solid var(--blue-mid);
   --blue-mid-light-border: 1px solid var(--blue-mid-light);

@@ -57,7 +57,7 @@ export default function Nav() {
         borderBottom={'1px solid var(----blue-mid-light, #85ADC5)'}
         borderStyle={'dashed'}
         strokeDasharray={'8, 8'}
-        background={'var(--chartreuse-lightest)'}
+        background={'var(--orange-lightest)'}
         pos={'fixed'}
         p={'0px 20px'}
         zIndex={100}
@@ -74,26 +74,25 @@ export default function Nav() {
             href='/'>
             <Box mb={'0.6rem'}>
               <Box className={spacingStyles.blueUnderscoreWrap}>
+                <Heading
+                  size={'md'}
+                  color={'var(--green-teal-mid)'}>
+                  fakeBoat
+                </Heading>
+                <Box
+                  ml={'-0.4rem'}
+                  mr={'-0.4rem'}
+                  mb={'0.2rem'}
+                  minW={'1rem'}
+                  borderBottom={'var(--blue-light-border-2)'}
+                  display={'inline-block'}
+                  lineHeight={'inherit'}></Box>
                 <Image
                   src={logo}
                   alt={'fakeBoat logo'}
                   width={40}
                   height={40}
                 />
-                <Box
-                  ml={'-0.5rem'}
-                  mr={'-0.2rem'}
-                  mb={'0.2rem'}
-                  minW={'1rem'}
-                  borderBottom={'var(--blue-light-border-2)'}
-                  display={'inline-block'}
-                  lineHeight={'inherit'}></Box>
-
-                <Heading
-                  size={'md'}
-                  color={'var(--green-teal-mid)'}>
-                  fakeBoat
-                </Heading>
               </Box>
             </Box>
           </Link>

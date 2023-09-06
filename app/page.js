@@ -19,14 +19,14 @@ import textBurst from '@/public/icons/textBurst.svg';
 import { LoadingContext } from './context/loadingContext';
 
 // hooks
-import { useEffect, useState, useContext } from 'react';
+import { useContext } from 'react';
 import { useIsMobile } from './api/hooks/useIsMobile';
 
 // components
 import Image from 'next/image';
 import LoadingDiv from './components/loadingDiv';
 import Link from 'next/link';
-import { Box, Flex, Text, Heading } from '@chakra-ui/react';
+import { Box, Flex, Text, Heading, Button, border } from '@chakra-ui/react';
 
 export default function Home() {
   const { loading } = useContext(LoadingContext);
@@ -49,7 +49,7 @@ export default function Home() {
   };
 
   return (
-    <Flex backgroundColor={'var(--chartreuse-lightest)'}>
+    <Flex backgroundColor={'var(--blue-light)'}>
       <Flex
         justify={'center'}
         p={'2rem'}
@@ -57,8 +57,14 @@ export default function Home() {
         <Box
           pr={'4em'}
           maxW={'40%'}>
-          {!loading && <LoadingDiv />}
-          <Heading size={'2xl'}>A fakeBoat for swimming</Heading>
+          {!loading && (
+            <Box
+              ml={'1rem'}
+              mb={'1rem'}>
+              <LoadingDiv borderColor='--blue-mid' />
+            </Box>
+          )}
+          <Heading size={'2xl'}>Fake teacher of things, imposter.</Heading>
           <Text
             fontSize={'1.2rem'}
             mb={'1rem'}
@@ -67,18 +73,38 @@ export default function Home() {
             paintings.
           </Text>
 
-          <Link
-            href='/'
-            className={textStyles.linkBlockChartreuse}
-            style={buttonStyle}>
-            <div className={textStyles.buttonLabel}>View shop</div>
-            <BsArrowRight />
+          <Link href='/'>
+            <Button
+              _hover={{
+                background: 'var(--blue-darkest)',
+                outline: '1px solid var(--blue-darker)',
+              }}
+              mr={'1rem'}
+              borderRadius={'0.3rem'}
+              background={'var(--blue-darker)'}
+              color={'#fff'}
+              rightIcon={<BsArrowRight />}>
+              View shop
+            </Button>
+            <Button
+              borderRadius={'0.3rem'}
+              _hover={{
+                background: 'var(--blue-light)',
+                outline: '1px solid var(--blue-darker)',
+              }}
+              color={'var(--blue-darker)'}
+              variant='ghost'>
+              Some memberships
+            </Button>
           </Link>
         </Box>
         <Box
           minH={'100%'}
           maxW={'60%'}
-          backgroundColor={'var(--chartreuse-light)'}
+          border={'1px solid var(--blue-mid)'}
+          background={'var(--white-50)'}
+          borderStyle={'dashed'}
+          strokeDasharray={'8, 8'}
           borderRadius={'0.3rem'}>
           <Flex
             maxH={'20rem'}

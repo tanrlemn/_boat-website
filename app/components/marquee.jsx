@@ -24,24 +24,15 @@ export default function Marquee({ delay = 0 }) {
     for (let i = 0; i < 3; i++) {
       marqueeSpan.push(
         <Flex
-          mr={'25rem'}
-          key={i}
-          align={'flex-end'}>
+          align={'flex-end'}
+          mr={'25rem'}>
           <Heading
             mr={'0.3rem'}
             size={'md'}
             color={'var(--green-teal-mid)'}>
             fakeBoat
           </Heading>
-          <Box
-            ml={'-0.5rem'}
-            mr={'-0.2rem'}
-            mb={'0.2rem'}
-            minW={'1rem'}
-            borderBottom={'var(--blue-light-border-2)'}
-            display={'inline-block'}
-            lineHeight={'inherit'}></Box>
-          <LoadingDiv />
+          <LoadingDiv key={i} />
         </Flex>
       );
     }

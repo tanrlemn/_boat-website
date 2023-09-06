@@ -44,7 +44,7 @@
 .ldsEllipsis div:nth-child(3) {
   left: 44px;
   animation: ellipsis3 ease-in-out 2.3s infinite;
-  background: var(--blue-light);
+  background: var(--blue-lightest);
 }
 
 .ldsEllipsis div:nth-child(4) {
