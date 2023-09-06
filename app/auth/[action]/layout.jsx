@@ -1,7 +1,7 @@
 'use client';
 
 // styles
-import textStyles from '@/app/styles/typography.module.css';
+import textStyles from '@/app/styles/text.module.css';
 import spacingStyles from '@/app/styles/spacing.module.css';
 import styles from '../styles/auth.module.css';
 

@@ -1,10 +1,5 @@
 'use client';
 
-// styles
-import styles from './styles/home.module.css';
-import textStyles from './styles/text.module.css';
-import spacingStyles from './styles/spacing.module.css';
-
 // images
 import { BsArrowRight } from 'react-icons/bs';
 // paintingRealPeople
@@ -13,25 +8,21 @@ import donut from '@/public/images/paintingRealPeople/donut.webp';
 // findingYourhead
 import owner from '@/public/images/findingYourhead/owner.webp';
 import bliss from '@/public/images/findingYourhead/bliss.webp';
-import textBurst from '@/public/icons/textBurst.svg';
 
 // context
 import { LoadingContext } from './context/loadingContext';
 
 // hooks
 import { useContext } from 'react';
-import { useIsMobile } from './api/hooks/useIsMobile';
 
 // components
 import Image from 'next/image';
 import LoadingDiv from './components/loadingDiv';
 import Link from 'next/link';
-import { Box, Flex, Text, Heading, Button, border } from '@chakra-ui/react';
+import { Box, Flex, Text, Heading, Button } from '@chakra-ui/react';
 
 export default function Home() {
   const { loading } = useContext(LoadingContext);
-
-  const mobile = useIsMobile();
 
   const squareImage = {
     maxWidth: '100%',
@@ -41,11 +32,6 @@ export default function Home() {
     borderRadius: '0.3rem',
     objectFit: 'cover',
     objectPosition: '50% 20%',
-  };
-
-  const buttonStyle = {
-    minWidth: '50%',
-    maxWidth: '50%',
   };
 
   return (
