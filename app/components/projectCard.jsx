@@ -11,7 +11,7 @@ import { BsArrowRight } from 'react-icons/bs';
 // hooks
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { usePreserveScroll } from '../api/helpers/preserveScroll';
+import { usePreserveScroll } from '../lib/helpers/preserveScroll';
 
 // components
 import Image from 'next/image';

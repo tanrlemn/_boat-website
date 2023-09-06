@@ -5,12 +5,8 @@ import styles from './memberships.module.css';
 import textStyles from '@/app/styles/text.module.css';
 import spacingStyles from '@/app/styles/spacing.module.css';
 
-// apis
-import { supabaseBenefits } from '@/app/api/db/supabaseBenefits';
-import { supabaseMemberships } from '@/app/api/db/supabaseMemberships';
-
 // context
-import { LoadingContext } from '@/app/context/loadingContext';
+import { LoadingContext } from '@/app/lib/context/loadingContext';
 
 // hooks
 import { useEffect, useState, useContext } from 'react';
@@ -22,18 +18,27 @@ import Loading from '@/app/loading';
 export default function Pricing() {
   const { loading, setLoading } = useContext(LoadingContext);
 
-  const lightText = {
-    color: '#d8eecd',
-    opacity: '1',
-  };
-
   const [currentMemberships, setCurrentMemberships] = useState(null);
+  const [benefitsText, setBenefitsText] = useState(null);
 
   useEffect(() => {
     const getMemberships = async () => {
-      const membershipsData = await supabaseMemberships();
+      const res = await fetch('/api/supabase/memberships');
+
+      const membershipsData = await res.json();
+
       setCurrentMemberships(membershipsData);
     };
+
+    const getText = async () => {
+      const res = await fetch('/api/supabase/benefits');
+      const benefits = await res.json();
+      setBenefitsText(benefits);
+    };
+
+    if (benefitsText === null) {
+      getText();
+    }
 
     if (currentMemberships === null) {
       setLoading(true);
@@ -45,20 +50,12 @@ export default function Pricing() {
         setLoading(false);
       }, 2000);
     }
-  }, [currentMemberships, setLoading]);
+  }, [currentMemberships, setLoading, benefitsText]);
 
-  const [benefitsText, setBenefitsText] = useState(null);
-
-  useEffect(() => {
-    const getText = async () => {
-      const data = await supabaseBenefits();
-      setBenefitsText(data);
-    };
-
-    if (benefitsText === null) {
-      getText();
-    }
-  }, [benefitsText]);
+  const lightText = {
+    color: '#d8eecd',
+    opacity: '1',
+  };
 
   return (
     <main className={styles.main}>

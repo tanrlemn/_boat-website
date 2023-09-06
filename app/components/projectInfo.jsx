@@ -12,8 +12,8 @@ import textBurst from '@/public/icons/textBurst.svg';
 
 // hooks
 import { useState, useEffect } from 'react';
-import { useIsMobile } from '../api/hooks/useIsMobile';
-import { useWindowSize } from '../api/hooks/useWindowSize';
+import { useIsMobile } from '../lib/hooks/useIsMobile';
+import { useWindowSize } from '../lib/hooks/useWindowSize';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 // components

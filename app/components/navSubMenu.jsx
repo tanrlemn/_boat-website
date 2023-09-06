@@ -5,7 +5,7 @@ import spacingStyles from '../styles/spacing.module.css';
 import navStyles from '../styles/nav.module.css';
 
 // hooks
-import { useIsMobile } from '../api/hooks/useWindowSize';
+import { useIsMobile } from '../lib/hooks/useWindowSize';
 
 // components
 import Link from 'next/link';

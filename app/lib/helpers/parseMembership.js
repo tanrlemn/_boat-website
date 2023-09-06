@@ -5,7 +5,7 @@ export function parseMembership(membership, benefitsText) {
   const yearlyPrice = membership.yearly_price;
   const backgroundColor = membership.background_color;
   const description = membership.description;
-  const benefits = membership.benefits[0];
+  const benefits = JSON.parse(membership.benefits)[0];
   const podcast = benefits.podcast;
   const vlog = benefits.vlog;
   const thoughtStream = benefits.thought_stream;

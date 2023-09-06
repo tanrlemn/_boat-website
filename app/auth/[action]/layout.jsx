@@ -9,7 +9,7 @@ import styles from '../styles/auth.module.css';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 // context
-import { LoadingContext } from '@/app/context/loadingContext';
+import { LoadingContext } from '@/app/lib/context/loadingContext';
 
 // hooks
 import { useState, useContext, Suspense } from 'react';

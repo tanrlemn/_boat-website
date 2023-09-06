@@ -7,12 +7,12 @@ import spacingStyles from '../styles/spacing.module.css';
 import 'react-slideshow-image/dist/styles.css';
 
 // context
-import { CartContext } from '../context/cartContext';
+import { CartContext } from '../lib/context/cartContext';
 
 // hooks
 import { useState, useContext, useEffect } from 'react';
-import { useIsMobile } from '../api/hooks/useIsMobile';
-import { useWindowSize } from '../api/hooks/useWindowSize';
+import { useIsMobile } from '../lib/hooks/useIsMobile';
+import { useWindowSize } from '../lib/hooks/useWindowSize';
 
 // components
 import Link from 'next/link';

@@ -2,8 +2,8 @@
 import styles from '../styles/(component_styles)/product.module.css';
 
 // hooks
-import { useWindowSize } from '../api/hooks/useWindowSize';
-import { useIsMobile } from '../api/hooks/useIsMobile';
+import { useWindowSize } from '../lib/hooks/useWindowSize';
+import { useIsMobile } from '../lib/hooks/useIsMobile';
 import { useState, Suspense } from 'react';
 
 // components

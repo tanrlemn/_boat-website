@@ -9,7 +9,7 @@ import ctaStyles from './styles/(component_styles)/cta.module.css';
 import { BsArrowRight } from 'react-icons/bs';
 
 // context
-import { LoadingContext } from './context/loadingContext';
+import { LoadingContext } from './lib/context/loadingContext';
 
 // hooks
 import { useContext } from 'react';

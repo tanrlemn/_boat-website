@@ -9,14 +9,14 @@ import bag from '../public/icons/bag.svg';
 import logo from '../public/logo.svg';
 
 // context
-import { LoadingContext } from './context/loadingContext';
-import { CartContext } from './context/cartContext';
-import { ContactContext } from './context/contactContext';
+import { LoadingContext } from './lib/context/loadingContext';
+import { CartContext } from './lib/context/cartContext';
+import { ContactContext } from './lib/context/contactContext';
 
 // hooks
 import { useState, useEffect, useContext } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useIsMobile } from './api/hooks/useWindowSize';
+import { useIsMobile } from './lib/hooks/useWindowSize';
 
 // components
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
@@ -57,7 +57,7 @@ export default function Nav() {
         borderBottom={'1px solid var(----blue-mid-light, #85ADC5)'}
         borderStyle={'dashed'}
         strokeDasharray={'8, 8'}
-        background={'var(--orange-lightest)'}
+        background={'var(--orange-light-alt)'}
         pos={'fixed'}
         p={'0px 20px'}
         zIndex={100}

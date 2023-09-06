@@ -4,7 +4,7 @@
 import marqueeStyles from '../styles/(component_styles)/marquee.module.css';
 
 // context
-import { LoadingContext } from '../context/loadingContext';
+import { LoadingContext } from '../lib/context/loadingContext';
 
 // hooks
 import { useContext } from 'react';
@@ -24,6 +24,7 @@ export default function Marquee({ delay = 0 }) {
     for (let i = 0; i < 3; i++) {
       marqueeSpan.push(
         <Flex
+          key={i}
           align={'flex-end'}
           mr={'25rem'}>
           <Heading

@@ -6,13 +6,13 @@ import textStyles from '@/app/styles/text.module.css';
 import spacingStyles from '@/app/styles/spacing.module.css';
 
 // context
-import { CartContext } from '@/app/context/cartContext';
-import { LoadingContext } from '@/app/context/loadingContext';
+import { CartContext } from '@/app/lib/context/cartContext';
+import { LoadingContext } from '@/app/lib/context/loadingContext';
 
 // hooks
 import { useState, useEffect, useContext, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useIsMobile } from '@/app/api/hooks/useIsMobile';
+import { useIsMobile } from '@/app/lib/hooks/useIsMobile';
 
 // components
 import { Grid, GridItem } from '@chakra-ui/react';

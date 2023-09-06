@@ -9,14 +9,14 @@ import spacingStyles from '@/app/styles/spacing.module.css';
 import { createCheckoutSession } from '@/app/api/checkout/checkoutSession';
 
 // context
-import { CartContext } from '@/app/context/cartContext';
-import { LoadingContext } from '@/app/context/loadingContext';
+import { CartContext } from '@/app/lib/context/cartContext';
+import { LoadingContext } from '@/app/lib/context/loadingContext';
 
 // hooks
 import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { loadStripe } from '@stripe/stripe-js';
-import { useOrigin } from '@/app/api/hooks/useOrigin';
+import { useOrigin } from '@/app/lib/hooks/useOrigin';
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY

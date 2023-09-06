@@ -10,7 +10,7 @@ import owner from '@/public/images/findingYourhead/owner.webp';
 import bliss from '@/public/images/findingYourhead/bliss.webp';
 
 // context
-import { LoadingContext } from './context/loadingContext';
+import { LoadingContext } from './lib/context/loadingContext';
 
 // hooks
 import { useContext } from 'react';
@@ -35,7 +35,7 @@ export default function Home() {
   };
 
   return (
-    <Flex backgroundColor={'var(--blue-light)'}>
+    <Flex backgroundColor={'var(--orange-lightest)'}>
       <Flex
         justify={'center'}
         p={'2rem'}
@@ -62,7 +62,6 @@ export default function Home() {
           <Link href='/'>
             <Button
               _hover={{
-                background: 'var(--blue-darkest)',
                 outline: '1px solid var(--blue-darker)',
               }}
               mr={'1rem'}
@@ -75,7 +74,7 @@ export default function Home() {
             <Button
               borderRadius={'0.3rem'}
               _hover={{
-                background: 'var(--blue-light)',
+                background: 'var(--orange-lightest)',
                 outline: '1px solid var(--blue-darker)',
               }}
               color={'var(--blue-darker)'}
