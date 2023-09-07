@@ -59,7 +59,7 @@ export default function Home() {
             paintings.
           </Text>
 
-          <Link href='/'>
+          <Link href='/shop'>
             <Button
               _hover={{
                 outline: '1px solid var(--blue-darker)',
@@ -71,6 +71,9 @@ export default function Home() {
               rightIcon={<BsArrowRight />}>
               View shop
             </Button>
+          </Link>
+
+          <Link href='/memberships'>
             <Button
               borderRadius={'0.3rem'}
               _hover={{
