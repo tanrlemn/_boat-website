@@ -48,6 +48,7 @@
   --pink-mid: #ff50c8;
 
   /* blue */
+  --blue-super-light: #eef9ff;
   --blue-lightest: #d8f0ff;
   --white-50: #d8f0ff84;
   --blue-light: #afd8f2;
@@ -69,6 +70,7 @@
   --teal-mid: #28fff1;
 
   /* gray */
+  --white: #fff;
   --light-gray: #cbd2d9;
   --dark-gray: #2c2c2c;
   --medium-gray: #4b5055;
@@ -95,7 +97,9 @@
   --orange-border: 2px solid var(--orange-mid);
 
   --green-light-border-lg: 1.5em solid var(--green-light);
+  --green-light-border: 1px solid var(--green-light);
   --green-mid-border: 1px solid var(--green-mid);
+  --green-mid-border-2: 2px solid var(--green-mid);
   --green-teal-mid-border: 1px solid var(--green-teal-mid);
   --green-dark-border: 1px solid var(--green-dark);
 

@@ -6,59 +6,26 @@ export function parseMembership(membership, benefitsText) {
   const backgroundColor = membership.background_color;
   const description = membership.description;
   const benefits = JSON.parse(membership.benefits)[0];
-  const podcast = benefits.podcast;
-  const vlog = benefits.vlog;
-  const thoughtStream = benefits.thought_stream;
-  const monthlyDownload = benefits.monthly_download;
   const exclusiveAccess = benefits.exclusive_access;
-  const freePrint = benefits.free_print;
+  const freePrints = benefits.free_prints;
   const qaAccess = benefits.qa_access;
-  const groupCoaching = benefits.group_coaching;
-  const biMonthlyWorkshop = benefits.bi_monthly_workshop;
+  const weeklyCoaching = benefits.weekly_coaching;
+  const fileAccess = benefits.file_access;
+  const fileDownloads = benefits.file_downloads;
   const enterprise = benefits.enterprise;
   const discounts = benefits.discounts;
-  const tenPercent = discounts.ten_percent;
-  const limitedDiscount = discounts.limited_discount;
-  const unlimitedUse = discounts.unlimited_use;
-  const limitedUses = discounts.limited_uses;
+  const discountPercent = discounts.discount_percent;
   const commissionDiscount = discounts.commission_discount;
+
   const checks = () => {
     const checksArr = [];
     checksArr.unshift(
       'Stream released music',
-      'Engage with Painting Real People',
-      'Request to be a Painting Real People participant',
+      'Listen to Fake Pete Remixes',
+      'Access to the Fake Pete & YOURHEAD Shops',
+      'Request to be painted',
       'Receive updates about art & music'
     );
-    if (podcast) {
-      const str = benefitsText.find(
-        (item) => item.benefit == 'podcast'
-      ).item_text;
-      checksArr.unshift(str);
-    }
-    if (vlog) {
-      const str = benefitsText.find((item) => item.benefit == 'vlog').item_text;
-      checksArr.unshift(str);
-    }
-    if (thoughtStream) {
-      const str = benefitsText.find(
-        (item) => item.benefit == 'thought_stream'
-      ).item_text;
-      checksArr.unshift(str);
-    }
-    if (monthlyDownload) {
-      const str = benefitsText.find(
-        (item) => item.benefit == 'monthly_download'
-      ).item_text;
-      checksArr.unshift(str);
-    }
-
-    if (tenPercent && !unlimitedUse) {
-      const str = benefitsText.find(
-        (item) => item.benefit == 'ten_percent'
-      ).item_text;
-      checksArr.unshift(str);
-    }
 
     if (exclusiveAccess) {
       const str = benefitsText.find(
@@ -67,9 +34,16 @@ export function parseMembership(membership, benefitsText) {
       checksArr.unshift(str);
     }
 
-    if (freePrint) {
+    if (fileAccess) {
       const str = benefitsText.find(
-        (item) => item.benefit == 'free_print'
+        (item) => item.benefit == 'file_access'
+      ).item_text;
+      checksArr.unshift(str);
+    }
+
+    if (fileDownloads) {
+      const str = benefitsText.find(
+        (item) => item.benefit == 'file_downloads'
       ).item_text;
       checksArr.unshift(str);
     }
@@ -81,25 +55,26 @@ export function parseMembership(membership, benefitsText) {
       checksArr.unshift(str);
     }
 
-    if (limitedDiscount > 0) {
-      const uses = unlimitedUse ? 'unlimited uses' : `${limitedUses} uses`;
-      checksArr.unshift(`${limitedDiscount}% off of everything else – ${uses}`);
+    if (freePrints) {
+      const str = benefitsText.find(
+        (item) => item.benefit == 'free_prints'
+      ).item_text;
+      checksArr.unshift(str);
+    }
+
+    if (discountPercent > 0) {
+      checksArr.unshift(
+        `${discountPercent}% off of everything else – unlimited uses`
+      );
     }
 
     if (commissionDiscount > 0) {
       checksArr.unshift(`${commissionDiscount}% off of commissioned originals`);
     }
 
-    if (groupCoaching) {
+    if (weeklyCoaching) {
       const str = benefitsText.find(
-        (item) => item.benefit == 'group_coaching'
-      ).item_text;
-      checksArr.unshift(str);
-    }
-
-    if (biMonthlyWorkshop) {
-      const str = benefitsText.find(
-        (item) => item.benefit == 'bi_monthly_workshop'
+        (item) => item.benefit == 'weekly_coaching'
       ).item_text;
       checksArr.unshift(str);
     }
@@ -120,21 +95,6 @@ export function parseMembership(membership, benefitsText) {
     yearlyPrice: yearlyPrice,
     backgroundColor: backgroundColor,
     description: description,
-    podcast: podcast,
-    vlog: vlog,
-    thoughtStream: thoughtStream,
-    monthlyDownload: monthlyDownload,
-    exclusiveAccess: exclusiveAccess,
-    freePrint: freePrint,
-    qaAccess: qaAccess,
-    groupCoaching: groupCoaching,
-    biMonthlyWorkshop: biMonthlyWorkshop,
-    enterprise: enterprise,
-    tenPercent: tenPercent,
-    limitedDiscount: limitedDiscount,
-    unlimitedUse: unlimitedUse,
-    limitedUses: limitedUses,
-    commissionDiscount: commissionDiscount,
     checks: checks(),
   };
 }
