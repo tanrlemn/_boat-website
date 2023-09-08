@@ -19,9 +19,3 @@ function getSnapshot() {
 function getServerSnapshot() {
   return true;
 }
-
-export function useIsMobile() {
-  const windowSize = useWindowSize();
-
-  return windowSize < 1090 ? true : false;
-}

@@ -4,7 +4,8 @@ import textStyles from '../styles/text.module.css';
 import spacingStyles from '../styles/spacing.module.css';
 
 // hooks
-import { useWindowSize, useIsMobile } from '../lib/hooks/useWindowSize';
+import { useWindowSize } from '../lib/hooks/useWindowSize';
+import { useIsMobile } from '../lib/hooks/useIsMobile';
 import { useState, useRef, useEffect } from 'react';
 
 // components

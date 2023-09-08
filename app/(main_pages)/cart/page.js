@@ -16,12 +16,12 @@ import { useIsMobile } from '@/app/lib/hooks/useIsMobile';
 
 // components
 import { Grid, GridItem } from '@chakra-ui/react';
-import CartItem from '@/app/components/cartItem';
-import CheckoutForm from '@/app/components/checkoutForm';
+import CartItem from '@/app/_components/cartItem';
+import CheckoutForm from '@/app/_components/checkoutForm';
 import Link from 'next/link';
 import Loading from '@/app/loading';
-import OrderSuccess from '@/app/components/orderSuccess';
-import LoadingDiv from '@/app/components/loadingDiv';
+import OrderSuccess from '@/app/_components/orderSuccess';
+import LoadingDiv from '@/app/_components/loadingDiv';
 
 export default function Cart() {
   const { loading, setLoading } = useContext(LoadingContext);

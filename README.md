@@ -1,8 +1,7 @@
-This is the official project for [YOURHEAD](https:/yourheadisourhead/).
+This is the official project for [fakeBoat](https:/fakeboat.com/).
 
-## YOURHEAD Website
+## fakeBoat Website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/610cb147-5375-42e6-bade-1fd72443519c/deploy-status)](https://app.netlify.com/sites/yourhead/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/51f980a2-b42d-4fff-98ff-4093832a6948/deploy-status)](https://app.netlify.com/sites/fakeboat/deploys)
 
-
-# \_yourhead-website
+# \_boat-website

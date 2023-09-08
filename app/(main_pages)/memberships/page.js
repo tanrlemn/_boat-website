@@ -16,12 +16,13 @@ import {
   Text,
   Heading,
   VStack,
+  Stack,
   Button,
   InputGroup,
   Input,
   InputRightElement,
 } from '@chakra-ui/react';
-import LoadingDiv from '@/app/components/loadingDiv';
+import LoadingDiv from '@/app/_components/loadingDiv';
 
 export default function Pricing() {
   const { loading, setLoading } = useContext(LoadingContext);
@@ -85,7 +86,7 @@ export default function Pricing() {
   return (
     <VStack
       alignItems={'center'}
-      p={'6rem 2rem 4rem 2rem'}
+      p={{ base: '6rem 1rem 4rem 1rem', lg: '6rem 2rem 4rem 2rem' }}
       background={'var(--blue-super-light)'}>
       {loading && <Loading />}
       <VStack
@@ -96,10 +97,10 @@ export default function Pricing() {
         <Box mb={'2rem'}>
           <Heading
             mb={'1.5rem'}
-            size={'4xl'}>
+            size={{ base: '2xl', lg: '4xl' }}>
             It can be free if you want it to be.
           </Heading>
-          <Text fontSize={'1.5rem'}>
+          <Text fontSize={{ base: '1.2rem', lg: '1.5rem' }}>
             Get access to some stuff and some other stuff
           </Text>
         </Box>
@@ -129,11 +130,14 @@ export default function Pricing() {
           fakeBoat.
         </Text>
       </VStack>
-      <VStack>
+      <VStack h={'fit-content'}>
         <Box
           mb={'2rem'}
           p={'0.2rem'}
-          pos={'relative'}
+          background={'var(--blue-super-light)'}
+          pos={'sticky'}
+          top={{ base: '4rem', lg: '6rem' }}
+          zIndex={1}
           borderRadius={'50px'}
           outline={'var(--green-mid-border-2)'}>
           <Flex
@@ -201,14 +205,14 @@ export default function Pricing() {
               }
             })}
         </Flex>
-        {freeMembership !== null && benefitsText !== null && (
-          <FreeCard
-            key={freeMembership.id}
-            membership={freeMembership}
-            benefitsText={benefitsText}
-          />
-        )}
       </VStack>
+      {freeMembership !== null && benefitsText !== null && (
+        <FreeCard
+          key={freeMembership.id}
+          membership={freeMembership}
+          benefitsText={benefitsText}
+        />
+      )}
     </VStack>
   );
 }

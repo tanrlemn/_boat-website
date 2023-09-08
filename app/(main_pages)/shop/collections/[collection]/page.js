@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 // components
-import ProductCard from '@/app/components/productCard';
+import ProductCard from '@/app/_components/productCard';
 
 export async function generateStaticParams() {
   const products = await supabase('products');

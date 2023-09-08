@@ -14,10 +14,10 @@ import profileImg from '@/public/images/profile-img.png';
 
 // components
 import Image from 'next/image';
-import FlexWrap from '../../components/flexWrap';
-import ExperienceCard from '../../components/experienceCard';
-import Marquee from '../../components/marquee';
-import GreenCta from '../../components/(cta)/greenCta';
+import FlexWrap from '../../_components/flexWrap';
+import ExperienceCard from '../../_components/experienceCard';
+import Marquee from '../../_components/marquee';
+import GreenCta from '../../_components/(cta)/greenCta';
 
 // hooks
 import { useEffect, useState } from 'react';

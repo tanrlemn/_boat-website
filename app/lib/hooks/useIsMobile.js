@@ -1,7 +1,6 @@
 'use client';
 
 // hooks
-import { useWindowSize } from './useWindowSize';
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from '@react-hook/media-query';
 

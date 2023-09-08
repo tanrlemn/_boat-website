@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 // components
-import ProjectInfo from '@/app/components/projectInfo';
+import ProjectInfo from '@/app/_components/projectInfo';
 
 export async function generateStaticParams() {
   const projects = await supabase('projects');

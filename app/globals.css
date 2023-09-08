@@ -94,7 +94,8 @@
   --red-border: 1px solid var(--red-mid);
 
   --orange-light-border: 1.5em solid var(--orange-light);
-  --orange-border: 2px solid var(--orange-mid);
+  --orange-border-2: 2px solid var(--orange-mid);
+  --orange-border: 1px solid var(--orange-mid);
 
   --green-light-border-lg: 1.5em solid var(--green-light);
   --green-light-border: 1px solid var(--green-light);
@@ -110,6 +111,7 @@
   --blue-light-border: 1px solid var(--blue-light);
   --blue-light-border-2: 2px solid var(--blue-mid);
   --blue-light-border-4: 4px solid var(--blue-light);
+  --blue-mid-border: 1px solid var(--blue-mid);
   --blue-mid-border-2: 2px solid var(--blue-mid);
   --blue-mid-light-border: 1px solid var(--blue-mid-light);
 

@@ -20,7 +20,7 @@ import { useIsMobile } from '../../lib/hooks/useIsMobile';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 // components
-import ProjectCard from '@/app/components/projectCard';
+import ProjectCard from '@/app/_components/projectCard';
 import Loading from '@/app/loading';
 
 export default function Recents() {

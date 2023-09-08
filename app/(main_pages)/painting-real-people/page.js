@@ -17,12 +17,12 @@ import consultation from '@/public/images/consultation.webp';
 // components
 import Image from 'next/image';
 import Link from 'next/link';
-import FlexCard from '../../components/flexCard';
-import FlexWrap from '../../components/flexWrap';
-import CheckboxCard from '../../components/checkboxCard';
-import Marquee from '../../components/marquee';
-import WaitingCta from '../../components/(cta)/waitingCta';
-import GreenCta from '../../components/(cta)/greenCta';
+import FlexCard from '../../_components/flexCard';
+import FlexWrap from '../../_components/flexWrap';
+import CheckboxCard from '../../_components/checkboxCard';
+import Marquee from '../../_components/marquee';
+import WaitingCta from '../../_components/(cta)/waitingCta';
+import GreenCta from '../../_components/(cta)/greenCta';
 
 export default function PaintingRealPeople() {
   const orangeBurst = {

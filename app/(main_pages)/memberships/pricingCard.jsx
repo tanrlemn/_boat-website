@@ -45,16 +45,21 @@ export default function PricingCard({
       justify={'space-between'}
       align={'flex-start'}
       border={'var(--dark-gray-border-20)'}
-      maxW={'30%'}
-      minW={'30%'}
-      m={index === 2 ? '0 1rem' : 0}
+      maxW={{ base: '100%', md: '30%' }}
+      minW={{ base: '100%', md: '30%' }}
+      m={{ base: 0, lg: index === 2 ? '0 1rem' : 0 }}
+      mb={{ base: '2rem', md: 0 }}
       p={'3rem 1rem 2rem 1rem'}
       borderRadius={'0.3rem'}
-      textAlign={'left'}
+      textAlign={{ base: 'center', md: 'left' }}
       whiteSpace={'pre-wrap'}
       background={`var(${backgroundColor})`}
       ref={pricingCardRef}>
-      <Box color={'var(--green-dark)'}>
+      <Flex
+        direction={'column'}
+        align={'center'}
+        color={'var(--green-dark)'}
+        w={'100%'}>
         <Heading
           mb={'1rem'}
           size={'lg'}>
@@ -104,9 +109,11 @@ export default function PricingCard({
                 return (
                   <ListItem key={i}>
                     <Flex
+                      justify={'flex-start'}
                       w={'100%'}
                       key={i}>
                       <ListIcon
+                        mt={'0.1rem'}
                         as={CheckCircleIcon}
                         borderRadius={'50%'}
                         border={`var(${backgroundColor}) 1px solid`}
@@ -114,13 +121,13 @@ export default function PricingCard({
                         color='var(--chartreuse)'
                         boxSize={'1.4rem'}
                       />
-                      <Text>{check}</Text>
+                      <Text textAlign={'left'}>{check}</Text>
                     </Flex>
                   </ListItem>
                 );
             })}
         </List>
-      </Box>
+      </Flex>
       <Flex
         w={'100%'}
         mt={'2rem'}

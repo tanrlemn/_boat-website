@@ -12,7 +12,7 @@ import { useEffect, useState, cache } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 // components
-import ProductCard from '@/app/components/productCard';
+import ProductCard from '@/app/_components/productCard';
 
 export default function Shop() {
   const searchParams = useSearchParams();
