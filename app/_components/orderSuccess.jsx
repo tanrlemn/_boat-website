@@ -6,7 +6,7 @@ import textStyles from '@/app/styles/text.module.css';
 import spacingStyles from '@/app/styles/spacing.module.css';
 
 // components
-import LoadingDiv from '@/app/components/loadingDiv';
+import LoadingDiv from '@/app/_components/loadingDiv';
 import Link from 'next/link';
 
 export default function OrderSuccess() {

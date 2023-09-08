@@ -14,15 +14,17 @@ import { LoadingContext } from './lib/context/loadingContext';
 
 // hooks
 import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
+import { useIsMobile } from './lib/hooks/useIsMobile';
 
 // components
 import Image from 'next/image';
-import LoadingDiv from './components/loadingDiv';
-import Link from 'next/link';
+import LoadingDiv from './_components/loadingDiv';
 import { Box, Flex, Text, Heading, Button } from '@chakra-ui/react';
 
 export default function Home() {
   const { loading } = useContext(LoadingContext);
+  const router = useRouter();
 
   const squareImage = {
     maxWidth: '100%',
@@ -35,14 +37,17 @@ export default function Home() {
   };
 
   return (
-    <Flex backgroundColor={'var(--orange-lightest)'}>
+    <Flex
+      backgroundColor={'var(--orange-lightest)'}
+      pt={{ base: '4rem', lg: 0 }}>
       <Flex
-        justify={'center'}
+        direction={{ base: 'column', lg: 'row' }}
+        justify={{ base: 'flex-start', lg: 'center' }}
         p={'2rem'}
         align={'center'}>
         <Box
-          pr={'4em'}
-          maxW={'40%'}>
+          pr={{ base: '0', lg: '4rem' }}
+          maxW={{ base: '100%', lg: '40%' }}>
           {!loading && (
             <Box
               ml={'1rem'}
@@ -50,7 +55,9 @@ export default function Home() {
               <LoadingDiv borderColor='--blue-mid' />
             </Box>
           )}
-          <Heading size={'2xl'}>Fake teacher of things, imposter.</Heading>
+          <Heading size={{ base: 'xl', lg: '2xl' }}>
+            Fake teacher of things, imposter.
+          </Heading>
           <Text
             fontSize={'1.2rem'}
             mb={'1rem'}
@@ -59,36 +66,36 @@ export default function Home() {
             paintings.
           </Text>
 
-          <Link href='/shop'>
-            <Button
-              _hover={{
-                outline: '1px solid var(--blue-darker)',
-              }}
-              mr={'1rem'}
-              borderRadius={'0.3rem'}
-              background={'var(--blue-darker)'}
-              color={'#fff'}
-              rightIcon={<BsArrowRight />}>
-              View shop
-            </Button>
-          </Link>
+          <Button
+            onClick={() => router.push('/memberships')}
+            _hover={{
+              outline: '1px solid var(--blue-darker)',
+            }}
+            mr={'1rem'}
+            marginBlock={'1rem'}
+            borderRadius={'0.3rem'}
+            background={'var(--blue-darker)'}
+            color={'#fff'}
+            rightIcon={<BsArrowRight />}>
+            Some memberships
+          </Button>
 
-          <Link href='/memberships'>
-            <Button
-              borderRadius={'0.3rem'}
-              _hover={{
-                background: 'var(--orange-lightest)',
-                outline: '1px solid var(--blue-darker)',
-              }}
-              color={'var(--blue-darker)'}
-              variant='ghost'>
-              Some memberships
-            </Button>
-          </Link>
+          <Button
+            onClick={() => router.push('/about')}
+            borderRadius={'0.3rem'}
+            _hover={{
+              background: 'var(--orange-lightest)',
+              outline: '1px solid var(--blue-darker)',
+            }}
+            variant={{ base: 'link', lg: 'ghost' }}
+            color={'var(--blue-darker)'}>
+            Learn more
+          </Button>
         </Box>
         <Box
-          minH={'100%'}
-          maxW={'60%'}
+          mt={{ base: '2rem', lg: '0' }}
+          minH={{ base: 'unset', lg: '100%' }}
+          maxW={{ base: '100%', lg: '60%' }}
           border={'1px solid var(--blue-mid)'}
           background={'var(--white-50)'}
           borderStyle={'dashed'}

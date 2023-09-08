@@ -11,6 +11,7 @@ import {
   Box,
   VStack,
   HStack,
+  Stack,
   Heading,
   Text,
   Tag,
@@ -29,19 +30,23 @@ export default function PricingCard({ membership, benefitsText }) {
     parseMembership(membership, benefitsText);
 
   return (
-    <HStack
+    <Stack
+      direction={{ base: 'column', lg: 'row' }}
       justify={'center'}
+      align={{ base: 'center', lg: 'flex-start' }}
       border={'var(--dark-gray-border-20)'}
       p={'2rem'}
-      m={'2rem'}
+      m={{ base: '0', md: '2rem' }}
       w={'100%'}
       borderRadius={'0.3rem'}
       textAlign={'left'}
       whiteSpace={'pre-wrap'}
       ref={pricingCardRef}>
-      <Box
+      <Flex
+        direction={'column'}
+        align={{ base: 'center', lg: 'flex-start' }}
         color={'var(--green-dark)'}
-        minW={'30%'}>
+        minW={{ base: '100%', lg: '30%' }}>
         <Heading
           mb={'1rem'}
           size={'lg'}>
@@ -58,7 +63,7 @@ export default function PricingCard({ membership, benefitsText }) {
         <Flex
           w={'100%'}
           mt={'0.5rem'}
-          justify={'flex-start'}>
+          justify={{ base: 'center', lg: 'flex-start' }}>
           <Button
             style={{ transition: 'all 0.4s ease-in-out' }}
             _hover={{
@@ -70,9 +75,12 @@ export default function PricingCard({ membership, benefitsText }) {
             Sign up
           </Button>
         </Flex>
-      </Box>
-      <Box maxW={'45%'}>
+      </Flex>
+      <Box
+        maxW={{ base: '100%', lg: '45%' }}
+        mt={{ base: '1rem', lg: 0 }}>
         <Text
+          textAlign={{ base: 'center', lg: 'left' }}
           mb={'1rem'}
           fontSize={'0.9rem'}>
           {description}
@@ -90,6 +98,7 @@ export default function PricingCard({ membership, benefitsText }) {
                       w={'100%'}
                       key={i}>
                       <ListIcon
+                        mt={'0.1rem'}
                         as={CheckCircleIcon}
                         borderRadius={'50%'}
                         border={`var(${backgroundColor}) 1px solid`}
@@ -104,6 +113,6 @@ export default function PricingCard({ membership, benefitsText }) {
             })}
         </List>
       </Box>
-    </HStack>
+    </Stack>
   );
 }

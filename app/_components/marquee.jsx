@@ -44,6 +44,8 @@ export default function Marquee({ delay = 0 }) {
     <>
       {!loading && (
         <Box
+          maxW={{ base: '100%', lg: 'unset' }}
+          overflow={'hidden'}
           p={'1rem 0 1.5rem 0'}
           m={'1rem 2rem'}
           borderTop={'var(--blue-light-border-2)'}

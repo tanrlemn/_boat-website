@@ -1,13 +1,5 @@
 'use client';
 
-import navStyles from './styles/nav.module.css';
-import textStyles from './styles/text.module.css';
-import spacingStyles from './styles/spacing.module.css';
-import ctaStyles from './styles/(component_styles)/cta.module.css';
-
-// images
-import { BsArrowRight } from 'react-icons/bs';
-
 // context
 import { LoadingContext } from './lib/context/loadingContext';
 
@@ -16,7 +8,7 @@ import { useContext } from 'react';
 
 // components
 import { Text, Heading, Box, VStack, Flex } from '@chakra-ui/react';
-import Marquee from './components/marquee';
+import Marquee from './_components/marquee';
 import Link from 'next/link';
 
 export default function Footer({ showContactBar, setShowContactBar }) {
@@ -31,10 +23,15 @@ export default function Footer({ showContactBar, setShowContactBar }) {
           borderTop={'var(--orange-light-border)'}
           minW={'100%'}>
           <Flex
-            p={'5rem 3.5rem 1rem 3.5rem'}
-            justify={'space-between'}>
+            direction={{ base: 'column', lg: 'row' }}
+            p={{
+              base: '5rem 1.5rem 1rem 1.5rem',
+              lg: '5rem 3.5rem 1rem 3.5rem',
+            }}
+            justify={{ base: 'flex-start', lg: 'space-between' }}>
             <Box
-              maxW={'30%'}
+              mb={{ base: '2rem', lg: '0' }}
+              maxW={{ base: '100%', lg: '30%' }}
               color={'var(--blue-dark)'}>
               <Heading
                 mb={'0.3rem'}
@@ -47,8 +44,11 @@ export default function Footer({ showContactBar, setShowContactBar }) {
                 try to make money.
               </Text>
             </Box>
-            <Flex justify={'flex-end'}>
+            <Flex
+              justify={{ base: 'flex-start', lg: 'flex-end' }}
+              flexWrap={{ base: 'wrap', lg: 'nowrap' }}>
               <VStack
+                mb={{ base: '2rem', lg: '0' }}
                 maxW={'fit-content'}
                 mr={'5rem'}
                 textAlign={'left'}
@@ -70,6 +70,7 @@ export default function Footer({ showContactBar, setShowContactBar }) {
                 </VStack>
               </VStack>
               <VStack
+                mb={{ base: '2rem', lg: '0' }}
                 maxW={'fit-content'}
                 mr={'5rem'}
                 textAlign={'left'}
@@ -91,6 +92,7 @@ export default function Footer({ showContactBar, setShowContactBar }) {
                 </VStack>
               </VStack>
               <VStack
+                mb={{ base: '2rem', lg: '0' }}
                 maxW={'fit-content'}
                 mr={'5rem'}
                 textAlign={'left'}
@@ -116,6 +118,7 @@ export default function Footer({ showContactBar, setShowContactBar }) {
                 </VStack>
               </VStack>
               <VStack
+                mb={{ base: '2rem', lg: '0' }}
                 maxW={'fit-content'}
                 textAlign={'left'}
                 align={'flex-start'}>
@@ -141,7 +144,7 @@ export default function Footer({ showContactBar, setShowContactBar }) {
             </Flex>
           </Flex>
           <Marquee />
-          <Box className={navStyles.footerLower}>
+          <Box p={'0 2em 2em 2em'}>
             <Text fontSize={'0.7rem'}>©2023 fakeBoat, All Rights reserved</Text>
           </Box>
         </Box>

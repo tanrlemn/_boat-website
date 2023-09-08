@@ -9,7 +9,7 @@ import spacingStyles from '@/app/styles/spacing.module.css';
 import { useEffect } from 'react';
 
 // components
-import LoadingDiv from '@/app/components/loadingDiv';
+import LoadingDiv from '@/app/_components/loadingDiv';
 
 export default function Error({ error, reset }) {
   useEffect(() => {
