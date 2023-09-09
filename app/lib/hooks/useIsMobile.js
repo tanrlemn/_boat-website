@@ -6,7 +6,7 @@ import { useMediaQuery } from '@react-hook/media-query';
 
 export function useIsMobile() {
   const [isMobile, setIsMobile] = useState(
-    useMediaQuery('only screen and (max-width: 1090px)')
+    useMediaQuery('only screen and (max-width: 768px)')
   );
 
   useEffect(() => {
