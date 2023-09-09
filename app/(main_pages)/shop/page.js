@@ -1,144 +1,137 @@
 'use client';
 
-// styles
-import styles from './shop.module.css';
-import textStyles from '@/app/styles/text.module.css';
-
-// apis
-import { supabase } from '@/app/api/db/getSupabase';
+// context
+import { LoadingContext } from '@/app/lib/context/loadingContext';
 
 // hooks
-import { useEffect, useState, cache } from 'react';
+import { useContext, useEffect, useState, cache } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 // components
-import ProductCard from '@/app/_components/productCard';
+import ProductCard from '@/app/(main_pages)/shop/productCard';
+import LoadingDiv from '@/app/_components/loadingDiv';
+import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/react';
 
 export default function Shop() {
+  const { loading, setLoading } = useContext(LoadingContext);
   const searchParams = useSearchParams();
-  const [supabaseProducts, setSupabaseProducts] = useState(null);
-  const [filteredProducts, setFilteredProducts] = useState(null);
-  const [supabaseProductTypes, setSupabaseProductTypes] = useState(null);
-  const [supabaseCollections, setSupabaseCollections] = useState(null);
 
-  const [currentCategoryText, setCurrentCategoryText] = useState(
-    'The Official YOURHEAD Shop'
-  );
+  const [storeItems, setStoreItems] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState(null);
   const [currentCategory, setCurrentCategory] = useState(null);
+  const [currentCategoryText, setCurrentCategoryText] =
+    useState('Here is a shop');
 
   useEffect(() => {
+    const categories = {
+      all: 'Shop All fakeBoat',
+      prints: 'Fine Art Prints',
+      originals: 'Original Paintings by fakeBoat',
+      apparel: 'fakeBoat Apparel',
+      music: 'fakeBoat Music',
+      sale: 'Sale Items',
+    };
+
     const category = searchParams.get('category');
     if (category === null) {
-      setCurrentCategoryText('The Official YOURHEAD Shop');
+      setCurrentCategoryText('Here is a shop');
     } else {
-      switch (category) {
-        case 'all':
-          setCurrentCategoryText('Shop All YOURHEAD');
-          break;
-        case 'prints':
-          setCurrentCategoryText('Fine Art Prints');
-          break;
-        case 'originals':
-          setCurrentCategoryText('Original Paintings by YOURHEAD');
-          break;
-        case 'apparel':
-          setCurrentCategoryText('YOURHEAD Apparel');
-          break;
-        case 'music':
-          setCurrentCategoryText('YOURHEAD Music');
-          break;
-        case 'sale':
-          setCurrentCategoryText('Sale Items');
-          break;
-        default:
-          setCurrentCategoryText('The Official YOURHEAD Shop');
-          break;
-      }
+      setCurrentCategoryText(categories[category]);
     }
     setCurrentCategory(category);
 
-    const getSupabase = async (table) => {
-      const res = await supabase(table);
+    const getStoreItems = async () => {
+      const collectionsRes = await fetch(`/api/supabase/collections`);
+      const productTypesRes = await fetch(`/api/supabase/productTypes`);
+      const productsRes = await fetch(`/api/supabase/products`);
 
-      if (table === 'products') {
-        setSupabaseProducts(res);
-      }
-      if (table === 'collection_types') {
-        setSupabaseCollections(res);
-      }
-      if (table === 'product_types') {
-        setSupabaseProductTypes(res);
-      }
+      const collections = await collectionsRes.json();
+      const productTypes = await productTypesRes.json();
+      const products = await productsRes.json();
+
+      setStoreItems({
+        collections,
+        productTypes,
+        products,
+      });
     };
 
-    if (supabaseProducts === null) {
-      cache(getSupabase('products'));
-    }
-    if (supabaseCollections === null) {
-      cache(getSupabase('collection_types'));
-    }
-    if (supabaseProductTypes === null) {
-      cache(getSupabase('product_types'));
+    if (storeItems === null) {
+      setLoading(true);
+      cache(getStoreItems());
     }
 
-    if (
-      supabaseProducts !== null &&
-      supabaseCollections !== null &&
-      supabaseProductTypes !== null
-    ) {
+    if (storeItems !== null && filteredProducts === null) {
+      const products = storeItems.products;
+      const productTypes = storeItems.productTypes;
+
       setFilteredProducts(
-        supabaseProducts.filter((product) => {
+        products.filter((product) => {
           if (currentCategory === 'all' || currentCategory === null)
             return true;
           if (currentCategory === 'sale') {
             return product.on_sale;
           }
-          const productType = supabaseProductTypes.find(
+          const productType = productTypes.find(
             (type) => type.product_type === currentCategory
           );
 
           return product.product_type_id === productType.id;
         })
       );
+      setLoading(false);
     }
   }, [
-    supabaseProducts,
-    supabaseCollections,
-    supabaseProductTypes,
+    storeItems,
+    setFilteredProducts,
     searchParams,
     currentCategory,
+    setLoading,
+    filteredProducts,
   ]);
 
   return (
-    <div className={styles.shopWrap}>
-      {supabaseProducts !== null &&
-        supabaseCollections !== null &&
-        supabaseProductTypes !== null &&
-        filteredProducts !== null && (
-          <div className={styles.shopBody}>
-            <div className={styles.shopHeader}>
-              <div className={textStyles.headingSm}>{currentCategoryText}</div>
-              <div className={styles.productCount}>
-                {filteredProducts.length === 1
-                  ? `${filteredProducts.length} product`
-                  : `${filteredProducts.length} products`}
-              </div>
-            </div>
-            <div className={styles.productsWrap}>
-              {filteredProducts.map((product, i) => {
-                return (
-                  <ProductCard
-                    key={i}
-                    product={product}
-                    collection={supabaseCollections.find(
-                      (collection) => collection.id === product.collection_id
-                    )}
-                  />
-                );
-              })}
-            </div>
-          </div>
+    <>
+      <VStack
+        align={{ base: 'center', lg: 'flex-start' }}
+        p={{ base: '5rem 1rem', lg: '3rem' }}>
+        <Flex
+          direction={{ base: 'column-reverse', lg: 'row' }}
+          align={'center'}
+          mb={'2rem'}>
+          <Heading>{currentCategoryText}</Heading>
+
+          {storeItems !== null && filteredProducts !== null && (
+            <Text ml={'1rem'}>
+              {filteredProducts.length === 1
+                ? `${filteredProducts.length}{' '}
+              product`
+                : `${filteredProducts.length} products`}
+            </Text>
+          )}
+        </Flex>
+        {loading && <LoadingDiv />}
+
+        {storeItems !== null && filteredProducts !== null && (
+          <Flex
+            direction={{ base: 'column', lg: 'row' }}
+            align={{ base: 'center', lg: 'flex-start' }}
+            flexWrap={'wrap'}
+            minW={'100%'}>
+            {filteredProducts.map((product, i) => {
+              return (
+                <ProductCard
+                  key={i}
+                  product={product}
+                  collection={storeItems.collections.find(
+                    (collection) => collection.id === product.collection_id
+                  )}
+                />
+              );
+            })}
+          </Flex>
         )}
-    </div>
+      </VStack>
+    </>
   );
 }
